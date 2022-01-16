@@ -1,24 +1,31 @@
 package ru.job4j.forum.model;
 
+import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Objects;
 
+@Entity
+@Table(name = "posts")
 public class Post {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String description;
-    private String created;
+    private Calendar created = new GregorianCalendar();
 
     public Post() {
     }
 
-    public static Post of(int id, String name, String description, String created) {
+    public static Post of(int id, String name, String description) {
         Post post = new Post();
         post.id = id;
         post.name = name;
         post.description = description;
-        post.created = created;
+        post.created.setTimeInMillis(System.currentTimeMillis());
         return post;
     }
 
@@ -46,11 +53,11 @@ public class Post {
         this.description = description;
     }
 
-    public String getCreated() {
+    public Calendar getCreated() {
         return created;
     }
 
-    public void setCreated(String created) {
+    public void setCreated(Calendar created) {
         this.created = created;
     }
 

@@ -16,7 +16,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    <title>Accident</title>
+    <title>Forum</title>
 </head>
 <body>
 <div>
@@ -27,7 +27,7 @@
         <thead>
         <tr>
             <th scope="col">№</th>
-            <th scope="col">Заголовок</th>
+            <th scope="col">Тема</th>
             <th scope="col">Описание</th>
             <th scope="col">Дата</th>
         </tr>
@@ -45,7 +45,7 @@
                     <c:out value="${post.description}"/>
                 </td>
                 <td>
-                    <c:out value="${post.created}"/>
+                    <c:out value="${post.created.getTime()}"/>
                 </td>
             </tr>
         </c:forEach>
@@ -54,7 +54,7 @@
         </div>
         </tbody>
     </table>
-    <a href="<c:url value='/create'/>">Добавить инцидент</a>
+    <a href="<c:url value='/create'/>">Добавить тему</a>
 </div>
 </tbody>
 </table>

@@ -2,9 +2,11 @@ package ru.job4j.forum.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.Post;
-import ru.job4j.forum.repository.PostRepository;
+import ru.job4j.forum.store.PostRepository;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class PostService {
@@ -15,15 +17,13 @@ public class PostService {
         this.repository = repository;
     }
 
-    public Collection<Post> findAllPost() {
-        return repository.getAllPost();
+    public Collection<Post> getAll() {
+        List<Post> res = new ArrayList<>();
+        repository.findAll().forEach(res::add);
+        return res;
     }
 
-    public void savePost(Post post) {
+    public void save(Post post) {
         repository.save(post);
-    }
-
-    public Post findById(int id) {
-        return repository.findById(id);
     }
 }

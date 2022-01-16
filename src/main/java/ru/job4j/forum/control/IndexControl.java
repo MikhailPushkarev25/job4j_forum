@@ -1,14 +1,10 @@
 package ru.job4j.forum.control;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import ru.job4j.forum.model.Post;
 import ru.job4j.forum.service.PostService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class IndexControl {
@@ -21,9 +17,8 @@ public class IndexControl {
 
     @GetMapping({"/", "/index"})
     public String index(Model model) {
-            List<Post> result = new ArrayList<>();
-            post.findAllPost().forEach(result::add);
-            model.addAttribute("posts", result);
+            model.addAttribute("posts", post.getAll());
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
             return "index";
     }
 }

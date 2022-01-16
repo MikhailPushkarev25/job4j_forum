@@ -21,13 +21,13 @@ public class PostControl {
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("posts", service.findAllPost());
+        model.addAttribute("posts", service.getAll());
         return "post/create";
     }
 
     @PostMapping("/save")
     public String save(@ModelAttribute Post post) {
-        service.savePost(post);
+      service.save(post);
         return "redirect:/";
-    }
+   }
 }
