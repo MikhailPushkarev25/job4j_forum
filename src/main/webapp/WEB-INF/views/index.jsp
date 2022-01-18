@@ -19,6 +19,7 @@
     <title>Forum</title>
 </head>
 <body>
+
 <div>
     Login as : ${user.username}
 </div>
@@ -36,6 +37,7 @@
         <c:forEach items="${posts}" var="post">
             <tr>
                 <td>
+                    <a href="<c:url value='/update?id=${post.id}'/>">Изменить</a>
                     <c:out value="${post.id}"/>
                 </td>
                 <td>

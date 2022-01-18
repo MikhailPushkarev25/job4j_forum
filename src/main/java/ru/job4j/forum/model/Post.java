@@ -12,7 +12,7 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private String name;
     private String description;
     private Calendar created = new GregorianCalendar();
@@ -29,7 +29,7 @@ public class Post {
         return post;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

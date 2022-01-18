@@ -44,7 +44,6 @@ public class PostRepository {
         if (post.getId() == 0) {
             post.setId(postsIndex.incrementAndGet());
         }
-        postMap.put(post.getId(), post);
     }
 
     public Post findById(int id) {

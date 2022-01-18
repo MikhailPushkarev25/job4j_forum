@@ -28,4 +28,10 @@ public class PostControl {
       service.save(post);
         return "redirect:/";
    }
+
+   @GetMapping("/update")
+    public String edit(@RequestParam("id") long id, Model model) {
+        model.addAttribute("post", service.findById(id));
+        return "post/update";
+   }
 }
