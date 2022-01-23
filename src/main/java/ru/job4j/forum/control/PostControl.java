@@ -1,5 +1,7 @@
 package ru.job4j.forum.control;
 
+import liquibase.pro.packaged.P;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +21,9 @@ public class PostControl {
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("posts", service.getAll());
+        Post post = new Post();
+        model.addAttribute("posts", post);
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return "post/create";
     }
 
